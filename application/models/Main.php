@@ -6,6 +6,6 @@ use application\core\Model;
 
 class Main extends Model {
     public function __construct() {
-        echo 'Its okey';
+        
     }
 }
