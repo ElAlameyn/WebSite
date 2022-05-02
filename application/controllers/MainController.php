@@ -18,7 +18,11 @@ class MainController extends Controller {
     }
 
     public function hobbiesAction() {
-        $this->view->render('Hobbies');
+        $data = $this->model->interests::getData();
+        $vars = [
+            'data' => $data
+        ];   
+        $this->view->render('Hobbies', $vars);
     }
 
     public function photoAlbumAction() {

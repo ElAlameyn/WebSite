@@ -22,7 +22,7 @@ body {
 
 .container-hobbies img {
     object-fit: cover;
-    /* height: 400px; */
+    margin-bottom: 100px;
 }
 
 p {
@@ -163,6 +163,7 @@ nav li a:hover {
     position: absolute;
     transform: translate(-50%, -50%);
 }
+
 j form.new_form {
     width: 600px;
     border: 1px solid red;
@@ -469,7 +470,7 @@ label .age__container {
 }
 
 .photo__open {
-    
+
     display: none;
     position: absolute;
     margin-left: auto;
@@ -484,12 +485,12 @@ label .age__container {
     z-index: 500;
 }
 
-.photo__open img{
+.photo__open img {
     width: 100%;
-    
+
 }
 
-.photo__open .buttons__open{
+.photo__open .buttons__open {
     margin-top: 20px;
     height: 40px;
     width: 100%;
@@ -537,14 +538,14 @@ label .age__container {
     border-radius: 4px;
 }
 
-.question__value{
+.question__value {
     width: 100%;
     color: black;
     display: flex;
     justify-content: center;
 }
 
-.question__buttons{
+.question__buttons {
     display: flex;
     width: 100%;
     margin-left: 50px;
@@ -552,7 +553,8 @@ label .age__container {
     justify-content: space-between;
 }
 
-.question__left, .question__right{
+.question__left,
+.question__right {
     display: flex;
     font-weight: bold;
     justify-content: center;
@@ -564,7 +566,7 @@ label .age__container {
     height: 40px;
 }
 
-.background-question{
+.background-question {
     display: none;
     position: absolute;
     z-index: 100;
@@ -575,24 +577,25 @@ label .age__container {
     height: 100vh;
 }
 
-.container_pop{
-}
+.container_pop {}
 
-.img__popover{
+.img__popover {
     display: block;
 
 }
-body{
+
+body {
     position: relative;
 }
-.pop__popover{
-display: none;
-position: absolute;
-z-index: 1;
-width: 100vw;
-height: 100vh;
-width: 300px;
-height: 300px;
-background-color: aquamarine;
+
+.pop__popover {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    width: 300px;
+    height: 300px;
+    background-color: aquamarine;
 
 }

@@ -43,7 +43,6 @@
     <div class="content-wrapper">
         <div class="content img">
             <?php
-            // debug($photos);
             foreach($photos as $key => $value) {
             ?>
             <div class="container_img">
