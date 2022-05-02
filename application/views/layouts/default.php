@@ -7,6 +7,6 @@
     <title><?php echo $title; ?></title>
 </head>
 <body>
-    <?php echo $content; ?>
+    <?php // echo $content; ?>
 </body>
 </html>

@@ -6,16 +6,40 @@ return [
         'controller' => 'main',
         'action' => 'index'
    ],
-    
-   'account/login' => [
-        'controller' => 'account',
-        'action' => 'login'
+
+    'contacts' => [
+        'controller' => 'main',
+        'action' => 'contacts'
+   ],
+   
+    'about' => [
+        'controller' => 'main',
+        'action' => 'about'
    ],
 
-   'account/register' => [
-        'controller' => 'account',
-        'action' => 'register'
+   'hobbies' => [
+     'controller' => 'main',
+     'action' => 'hobbies'
    ],
 
+   'photoAlbum' => [
+     'controller' => 'main',
+     'action' => 'photoAlbum'   
+   ],
+
+   'story' => [
+     'controller' => 'main',
+     'action' => 'story'   
+   ],
+
+   'studies' => [
+     'controller' => 'main',
+     'action' => 'studies'   
+   ],
+
+   'test' => [
+     'controller' => 'main',
+     'action' => 'test'   
+   ],
 
 ];

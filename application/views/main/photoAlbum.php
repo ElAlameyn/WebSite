@@ -42,6 +42,17 @@
 
     <div class="content-wrapper">
         <div class="content img">
+            <?php
+            // debug($photos);
+            foreach($photos as $key => $value) {
+            ?>
+            <div class="container_img">
+                <img src=<?=$value?> title = <?=$key?>>
+                <div class="img_title"><?=$key?></div>
+            </div>
+            <?php
+            }
+            ?>
         </div>
     </div>
 </body>

@@ -394,10 +394,21 @@ function findNumTitle() {
 }
 
 function outputNavbar(indexCheck) {
+  let link = ""
   title_menu.forEach((element, i) => {
-    let context = `<li ><a class="link " href="/application/views/main/${links_php[i]}">${data_title[i]
+    switch (i) {
+      case 0: link = "/hobbies"; break;
+      case 1: link = "/studies"; break;
+      case 2: link = "/photoAlbum"; break;
+      case 3: link = "/contacts"; break;
+      case 4: link = "/test"; break;
+      case 5: link = "/story"; break;
+    } 
+
+    let context = `<li ><a class="link " href="${link}">${data_title[i]
       }</a> <img src="/public/ico/${indexCheck == i ? title_check : element
       }" alt=""></li>`;
+
     content_ul.append(context);
   });
 }
@@ -548,7 +559,7 @@ function checkLocal() {
 setCookie();
 // showPopoverHelper()
 outputInterests("favourite", "books", "music", "films", "games");
-outputPhoto();
+//outputPhoto();
 openPhoto();
 AskQuestion()
 nextPhoto();
