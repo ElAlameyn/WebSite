@@ -22,15 +22,10 @@ class MainController extends Controller {
     }
 
     public function photoAlbumAction() {
-        $photos = [];
-        for ($i = 1; $i <= 10; $i++) {
-            $photos["Img_".$i] = "http://dummyimage.com/200";
-        }
-
+       $photos = $this->model->photoModel->getPhotos();
        $vars = [
            'photos' => $photos
-       ];
-
+       ];   
         $this->view->render('Photo Album', $vars);
     }
 
