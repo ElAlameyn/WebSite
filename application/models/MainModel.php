@@ -4,7 +4,7 @@ namespace application\models;
 
 use application\core\Model;
 
-class Main extends Model {
+class MainModel extends Model {
     public $photoModel;
     public $interests;
 
@@ -12,6 +12,4 @@ class Main extends Model {
         $this->photoModel = new PhotoModel();
         $this->interests = new InterestsModel();
     }
-
-    
 }

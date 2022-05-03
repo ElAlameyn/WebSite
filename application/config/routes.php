@@ -7,9 +7,9 @@ return [
         'action' => 'index'
    ],
 
-    'contacts' => [
-        'controller' => 'main',
-        'action' => 'contacts'
+    'contacts/index' => [
+        'controller' => 'contacts',
+        'action' => 'index'
    ],
    
     'about' => [
@@ -37,9 +37,9 @@ return [
      'action' => 'studies'   
    ],
 
-   'test' => [
-     'controller' => 'main',
-     'action' => 'test'   
+   'test/index' => [
+     'controller' => 'test',
+     'action' => 'index'   
    ],
 
 ];

@@ -366,15 +366,15 @@ function findNumTitle() {
   }
   if (document.querySelector(".content.about")) {
     numTitles = 0;
-    numStory.Interest += 1;
-    variable = Number(localStorage.numInterest);
-    localStorage.numInterest = variable + 1;
+    numStory.Education += 1;
+    variable = Number(localStorage.numEducation);
+    localStorage.numEducation = variable + 1; 
   }
   if (document.querySelector("#films")) {
     numTitles = 1;
-    numStory.Education += 1;
-    variable = Number(localStorage.numEducation);
-    localStorage.numEducation = variable + 1;
+    numStory.Interest += 1;
+    variable = Number(localStorage.numInterest);
+    localStorage.numInterest = variable + 1;
   }
   if (document.querySelector("#FIO")) {
     numTitles = 3;
@@ -400,10 +400,10 @@ function outputNavbar(indexCheck) {
       case 0: link = "/hobbies"; break;
       case 1: link = "/studies"; break;
       case 2: link = "/photoAlbum"; break;
-      case 3: link = "/contacts"; break;
-      case 4: link = "/test"; break;
+      case 3: link = "/contacts/index"; break;
+      case 4: link = "/test/index"; break;
       case 5: link = "/story"; break;
-    } 
+    }
 
     let context = `<li ><a class="link " href="${link}">${data_title[i]
       }</a> <img src="/public/ico/${indexCheck == i ? title_check : element
@@ -568,5 +568,6 @@ useCalendar();
 correctContact();
 checkContact();
 correctTest();
+//checkLocal();
 findNumTitle();
 showAnotherPopoverHelper();

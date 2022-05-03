@@ -34,7 +34,7 @@
         </ul>
     </nav>
 
-    <form class="text-white test">
+    <form class="text-white test", action = "test/check">
 
         <fieldset class="mb-3">
             <label class="form-label" for="">Name Second Name</label>

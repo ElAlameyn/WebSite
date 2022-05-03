@@ -11,7 +11,8 @@ abstract class Controller {
     public function __construct($route) {
         $this->route = $route;
         $this->view = new View($route);
-        $this->model = $this->loadModel($route['controller']);
+        $model = $route['controller'].'Model';
+        $this->model = $this->loadModel($model);
     }
 
     public function loadModel($name) {
