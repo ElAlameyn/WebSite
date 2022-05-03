@@ -1,6 +1,6 @@
 <?php
 
-require 'app/models/validators/CustomFormValidation.php';
+require 'application/lib/CustomFormValidation.php';
 
 class ResultsVerification extends CustomFormValidation {
     private $result = 0;

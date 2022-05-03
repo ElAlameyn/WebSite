@@ -34,7 +34,7 @@
         </ul>
     </nav>
 
-    <form class="text-white test", action = "test/check">
+    <form class="text-white test", action = "/test/check", method = "POST">
 
         <fieldset class="mb-3">
             <label class="form-label" for="">Name Second Name</label>
@@ -115,6 +115,29 @@
             <button id="send_type" class="btn btn-primary">Send</button>
             <button class="btn btn-outline-danger">Clear</button>
         </fieldset>
+
+        <div class='result-block'>
+        <?php 
+            if (isset($data['errors'])) {
+                foreach ($data['errors'] as $key => $item) {
+                    echo "<p class='result-block__item error'>$item</p>";
+                }
+            } elseif (isset($data['result'])) {
+                $result = $data['result'];
+                $color = $data['result'] > 2 ? 'success' : 'error';
+                echo "<p style='color: transparent;' class='result-block__item $color'>Вы ответили верно на $result из 3 вопросов!</p>";
+                if($data['result'] > 0){
+                    echo "<img src='https://i.ibb.co/FbtbQ5v/image-2021-02-21-T08-41-23-990-Z.png' alt='Картинка приемлемо' style='width: 500px;'>";
+                }
+                else{
+                    echo "<img src='https://i.ibb.co/K6FqQCg/imgonline-com-ua-Resize-Zf-NL1-T4-UHYs-Vs-auto-custom.jpg' alt='Картинка приемлемо' style='width: 500px;'>";
+                }
+            }
+            elseif (isset($data['exception'])){
+                echo "Ты ОБЯЗАН авторизоваться, чтобы увидеть свой результат.";
+            }
+        ?>
+    </div>
 
     </form>
     </main>

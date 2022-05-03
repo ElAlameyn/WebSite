@@ -11,6 +11,16 @@ return [
         'controller' => 'contacts',
         'action' => 'index'
    ],
+
+   'contacts/check' => [
+    'controller' => 'contacts',
+    'action' => 'check'
+  ],  
+
+  'test/check' => [
+    'controller' => 'test',
+    'action' => 'check'
+  ],  
    
     'about' => [
         'controller' => 'main',

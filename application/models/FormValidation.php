@@ -1,15 +1,19 @@
 <?php 
 
+namespace application\models;
+
+
 class FormValidation {
     public $errors = [];
     public $rules = [
-        'fullname' => [
+        'FIO' => [
 			'isNotEmpty'
 		],
-        'group' => [
-			'isNotEmpty'
+        'age' => [
+			'isNotEmpty',
+            'isInteger'
 		],
-		'phone' => [
+		'Phone' => [
 			'isNotEmpty',
 			'isPhone'
 		],
@@ -42,6 +46,7 @@ class FormValidation {
     }
 
     public function validate($post_array) {
+        unset($post_array['radio']);
         foreach ($post_array as $key => $item) {
             if ($this->rules[$key]) {
                 foreach ($this->rules[$key] as $rule) {
@@ -60,15 +65,15 @@ class FormValidation {
 
     public function isNotEmpty($data, $key) {
 		if (empty($data)) {
-            if ($key == "fullname") {
+            if ($key == "FIO") {
                 $resultKey = "ФИО";
-            } elseif ($key == "group") {
-                $resultKey = "Группа";
-            } elseif ($key == "message") {
-                $resultKey = "Сообщение";
-            } elseif ($key == "title") {
-                $resultKey = "Тема";
-            } elseif ($key == "review") {
+            } elseif ($key == "age") {
+                $resultKey = "Age";
+            } elseif ($key == "Email") {
+                $resultKey = "Email";
+            } elseif ($key == "Phone") {
+                $resultKey = "Phone";
+            } elseif ($key == "email") {
                 $resultKey = "Отзыв";
             } elseif ($key == "phone") {
                 $resultKey = "Телефон";

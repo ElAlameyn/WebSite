@@ -8,7 +8,11 @@ class View {
 
     public function __construct($route) {
         $this->route = $route;
-        $this->path = $route['controller'].'/'.$route['action'];
+        if ($route['action'] == 'check') {
+            $this->path = $route['controller'].'/index';
+        } else {
+            $this->path = $route['controller'].'/'.$route['action'];
+        }
     }
 
     public function render($title, $vars = []) {

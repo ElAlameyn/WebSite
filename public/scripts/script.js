@@ -565,8 +565,8 @@ AskQuestion()
 nextPhoto();
 setDate();
 useCalendar();
-correctContact();
-checkContact();
+//correctContact();
+//checkContact();
 correctTest();
 //checkLocal();
 findNumTitle();

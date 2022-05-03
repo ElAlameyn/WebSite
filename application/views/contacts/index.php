@@ -23,7 +23,7 @@
     </ul>
   </nav>
 
-
+<form action="/contacts/check" method = "post">
   <div class="content-wrapper">
     <div class="container contact">
       <div class="contact__left">
@@ -32,15 +32,13 @@
           <h3>ФИО
             <div class="warning fio"></div>
           </h3>
-          <input id='FIO' class="input" type="text">
-
+          <input id='FIO' class="input" type="text" name = "FIO">
           <hr>
         </label>
 
         <label for="">
           <h3>Возраст</h3>
-          <input id='input' class="input" type="number">
-
+          <input id='age' class="input" type="number" name = "age">
           <hr>
         </label>
 
@@ -97,7 +95,7 @@
         </div>
       </div>
 
-      <div class="contact__right">
+      <div class="contact__right" action = "test/check">
         <div class="helper">Требуется ввести ваш пол, email и телефон</div>
 
         <h3>Пол</h3>
@@ -117,7 +115,7 @@
           <h3>Email
             <div class="warning email"></div>
           </h3>
-          <input id='input' class="input" type="text">
+          <input id='Email' class="input" type="text" name = "Email">
           <hr>
         </label>
 
@@ -125,7 +123,7 @@
           <h3>Телефон
             <div class="warning phone"></div>
           </h3>
-          <input id='Phone' class="input" type="text">
+          <input id='Phone' class="input" type="text" name = "Phone">
           <hr>
         </label>
 
@@ -135,6 +133,27 @@
         </div>
       </div>
     </div>
+
+    
+  </div>
+</form>
+
+<div class='result-block'>
+        <?php 
+            if (isset($errors)) {
+                //echo $errors;
+                if (count($errors) > 0) {
+                    foreach ($errors as $key => $item) {
+                        echo "<p class='result-block__item error'>$item</p>";
+                    }
+                } else {
+                    echo "<p class='result-block__item success'>Форма была отправлена</p>";
+                }
+            }
+        ?>
+    </div>
+
+  
 </body>
 <script src="/public/scripts/jquery-3.6.0.min.js"></script>
 <script src="/public/scripts/script.js"></script>
