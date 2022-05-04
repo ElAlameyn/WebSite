@@ -11,7 +11,6 @@ class ContactsController extends Controller {
     
     function checkAction() {
 		if (!empty($_POST)) {
-            //debug($_POST);
 			$this->model->validator->validate($_POST);
             $errors = $this->model->validator->getErrors();
             $vars = [ 'errors' => $errors ];

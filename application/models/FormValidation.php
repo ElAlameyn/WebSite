@@ -23,7 +23,7 @@ class FormValidation {
 		'Email' => [
 			'isEmail'
         ],
-        'message' => [
+        'fullName' => [
             'isNotEmpty'
         ],
         'review' => [

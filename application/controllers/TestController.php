@@ -12,29 +12,24 @@ class TestController extends Controller {
     
     function checkAction() {
 		if (!empty($_POST)) {
-      if (!isset($_SESSION['isUser'])) {
-        $vars = ['exception'=> 403];
-        $this->view->render('TestView.php', $vars);
-        return;
-      }
-			$this->model->validator->validate($_POST);
-            $errors = $this->model->validator->getErrors();
-            var_dump($errors);
+		    //   $this->model->validator->validate($_POST);
+            // $errors = $this->model->validator->getErrors();
+            //var_dump($errors);
 			if (empty($errors)) {
-                var_dump("dich");
-                $this->model->validator->checkAns($_POST);
-                $this->model->createTest($_POST);
+                $this->model->resultVerification->checkAns($_POST);
+                //debug($_POST);
+                //$this->model->createTest($_POST);
                 $_POST = array();
-                $result = $this->model->validator->getResult();
+                $result = $this->model->resultVerification->getResult();
                 $vars = [ 'result' => $result ];
 			}
 			else {
                 $vars = [ 'errors' => $errors ];
             }
-			$this->view->render('TestView.php', 'Тест', $vars);
+			$this->view->render('Test', $vars);
 		} 
     else {
-            $this->view->render('TestView.php', 'Тест');
+            $this->view->render('Test');
         }
 	}
 }

@@ -38,12 +38,12 @@
 
         <fieldset class="mb-3">
             <label class="form-label" for="">Name Second Name</label>
-            <input class="form-control" name="fullName" type="text" placeholder="Enter your FIO" required>
+            <input class="form-control" name="fullName" type="text" placeholder="Enter your FIO" >
         </fieldset>
 
         <fieldset class="mb-3">
             <label for="" class="form-label">Group</label>
-            <select class="form-select" name="group" id="" required>
+            <select class="form-select" name="group" id="">
                 <option value="none" disabled selected>Choose your group</option>
                 <optgroup label="First course">
                     <option value="10">First group</option>
@@ -75,19 +75,19 @@
                 eveniet! Incidunt, consequuntur eum?</p>
             <div class="d-flex flex-column gap-2">
                 <div>
-                    <input type="radio" name="task2" class="form-check-input">
+                    <input type="radio" name="task2" class="form-check-input" value="answer 1">
                     <label for="" class="form-check-inline">Answer 1</label>
                 </div>
                 <div>
-                    <input type="radio" name="task2" class="form-check-input">
+                    <input type="radio" name="task2" class="form-check-input" value="answer 2">
                     <label for="" class="form-check-inline">Answer 2</label>
                 </div>
                 <div>
-                    <input type="radio" name="task2" class="form-check-input">
+                    <input type="radio" name="task2" class="form-check-input" value="answer 3">
                     <label for="" class="form-check-inline">Answer 3</label>
                 </div>
                 <div>
-                    <input type="radio" name="task2" class="form-check-input">
+                    <input type="radio" name="task2" class="form-check-input" value="answer 4>
                     <label for="" class="form-check-inline">Answer 4</label>
                 </div>
             </div>
@@ -101,12 +101,12 @@
             <select name="task3" id="" class="form-select" required>
                 <option value="" disabled selected>Choose your answer</option>
                 <optgroup label="Group 1">
-                    <option value="12">Answer 1</option>
-                    <option value="12">Answer 2</option>
+                    <option value="answer 1">Answer 1</option>
+                    <option value="answer 2">Answer 2</option>
                 </optgroup>
                 <optgroup label="Group 2">
-                    <option value="12">Answer 3</option>
-                    <option value="12">Answer 4</option>
+                    <option value="answer 3">Answer 3</option>
+                    <option value="answer 4">Answer 4</option>
                 </optgroup>
             </select>
         </fieldset>
@@ -118,23 +118,19 @@
 
         <div class='result-block'>
         <?php 
-            if (isset($data['errors'])) {
-                foreach ($data['errors'] as $key => $item) {
+            if (isset($errors)) {
+                foreach ($errors as $key => $item) {
                     echo "<p class='result-block__item error'>$item</p>";
                 }
-            } elseif (isset($data['result'])) {
-                $result = $data['result'];
-                $color = $data['result'] > 2 ? 'success' : 'error';
-                echo "<p style='color: transparent;' class='result-block__item $color'>Вы ответили верно на $result из 3 вопросов!</p>";
-                if($data['result'] > 0){
-                    echo "<img src='https://i.ibb.co/FbtbQ5v/image-2021-02-21-T08-41-23-990-Z.png' alt='Картинка приемлемо' style='width: 500px;'>";
+            } elseif (isset($result)) {
+                echo "<p style='color: transparent;'>Вы ответили верно на $result из 3 вопросов!</p>";
+                if ($result < 2) {
+                    echo '<p>Failure, Misha go to be a Python Programmer. Such stupid).</p>';
+                    echo "<img src='https://media.istockphoto.com/vectors/fail-ink-stamp-vector-id951985126?k=20&m=951985126&s=612x612&w=0&h=vq_zrYB1EdKILKuO3wMW5e9M4VdGFLSJPGXe4dp84k4=' alt='Картинка неприемлемо' style='width: 500px;'>";
+                } else {
+                    echo '<p>Success, Misha go to be a JavaScript Programmer. OOP sucks.</p>';
+                    echo "<img src='https://cdn.xxl.thumbs.canstockphoto.com/ok-3d-people-man-person-with-a-huge-tick-and-thumb-up-drawings_csp15025439.jpg' alt='Картинка приемлемо' style='width: 500px;'>";
                 }
-                else{
-                    echo "<img src='https://i.ibb.co/K6FqQCg/imgonline-com-ua-Resize-Zf-NL1-T4-UHYs-Vs-auto-custom.jpg' alt='Картинка приемлемо' style='width: 500px;'>";
-                }
-            }
-            elseif (isset($data['exception'])){
-                echo "Ты ОБЯЗАН авторизоваться, чтобы увидеть свой результат.";
             }
         ?>
     </div>
