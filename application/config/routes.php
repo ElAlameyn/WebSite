@@ -52,4 +52,14 @@ return [
      'action' => 'index'   
    ],
 
+   'guestBook/index' => [
+    'controller' => 'guestBook',
+    'action' => 'index'   
+  ],
+
+  'guestBook/create' => [
+    'controller' => 'guestBook',
+    'action' => 'create'   
+  ],
+
 ];

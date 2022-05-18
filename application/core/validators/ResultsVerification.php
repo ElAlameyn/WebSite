@@ -1,6 +1,6 @@
 <?php
 
-namespace application\models;
+namespace application\core\validators;
 
 class ResultsVerification extends CustomFormValidation {
     private $result = 0;

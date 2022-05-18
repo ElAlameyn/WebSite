@@ -1,7 +1,6 @@
 <?php 
 
-namespace application\models;
-
+namespace application\core\validators;
 
 class FormValidation {
     public $errors = [];
