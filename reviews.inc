@@ -5,3 +5,4 @@ Artiom;artiom.k.3008@gmail.com;2022-05-18 07:09:24;Bad;
 Artiom;artiom.k.3008@gmail.com;2022-05-18 07:10:45;Bad;
 Artiom;artiom.k.3008@gmail.com;2022-05-18 07:10:51;Bad;
 Artiom;artiom.k.3008@gmail.com;2022-05-18 07:11:18;Bad;
+Me;artem.k.3008@gmail.com;2022-05-18 08:40:06;Great;

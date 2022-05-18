@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     '' => [
         'controller' => 'main',
         'action' => 'index'
@@ -59,6 +58,16 @@ return [
 
   'guestBook/create' => [
     'controller' => 'guestBook',
+    'action' => 'create'   
+  ],
+
+  'uploadReviews/index' => [
+    'controller' => 'uploadReviews',
+    'action' => 'index'   
+  ],
+
+  'uploadReviews/create' => [
+    'controller' => 'uploadReviews',
     'action' => 'create'   
   ],
 
