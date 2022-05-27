@@ -30,7 +30,10 @@ class FormValidation {
         ],
         'title' => [
             'isNotEmpty'
-        ]
+        ],
+        'message' => [
+            'isNotEmpty'
+        ],
     ];
 
     public function setRule($field_name, $validator_name) {

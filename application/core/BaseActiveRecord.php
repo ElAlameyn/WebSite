@@ -2,12 +2,18 @@
 
 namespace application\core;
 
-class BaseActiveRecord {
+use \PDO;
+use \PDOException;
+use \FFI\Exception;
+
+class BaseActiveRecord
+{
 	public static $pdo;
-	protected static $tablename;
+	protected static $tablename = "web";
 	protected static $dbfields = array();
 
-	public function BaseActiveRecord() {
+	public function __construct()
+	{
 		if (!static::$tablename) {
 			return;
 		}
@@ -15,27 +21,30 @@ class BaseActiveRecord {
 		static::getFields();
 	}
 
-	public static function getFields() {
-		$stmt = static::$pdo->query("SHOW FIELDS FROM ".static::$tablename);
+	public static function getFields()
+	{
+		$stmt = static::$pdo->query("SHOW FIELDS FROM " . static::$tablename);
 		while ($row = $stmt->fetch()) {
 			static::$dbfields[$row['Field']] = $row['Type'];
 		}
 	}
 
-	public static function setupConnection() {
+	public static function setupConnection()
+	{
 		if (!isset(static::$pdo)) {
 			try {
-				static::$pdo = new PDO("mysql:dbname=web; host=localhost; char-set=utf8", "root", "root");
+				static::$pdo = new PDO("mysql:dbname=web;host=localhost","root","root");
 			} catch (PDOException $ex) {
-				die("Ошибка подключения к БД: $ex");
+				die("Ошибка подключения к БД:  $ex");
 			}
 		}
 	}
 
-	public static function findByQuery($query) {
-        static::setupConnection();
-        
-        $sql = "SELECT * FROM ".static::$tablename." WHERE ".$query;
+	public static function findByQuery($query)
+	{
+		static::setupConnection();
+
+		$sql = "SELECT * FROM ".static::$tablename . " WHERE " . $query;
 		$stmt = static::$pdo->query($sql);
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -45,16 +54,17 @@ class BaseActiveRecord {
 
 		$ar_obj = new static();
 		foreach ($row as $key => $value) {
-			$ar_obj ->$key = $value;
+			$ar_obj->$key = $value;
 		}
 
 		return $ar_obj;
 	}
-	
-	public static function findByField($value, $field) {
-        static::setupConnection();
-        
-		$sql = "SELECT * FROM ".static::$tablename." WHERE `$field`='$value'";
+
+	public static function findByField($value, $field)
+	{
+		static::setupConnection();
+
+		$sql = "SELECT * FROM " . static::$tablename . " WHERE `$field`='$value'";
 		$stmt = static::$pdo->query($sql);
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -64,14 +74,15 @@ class BaseActiveRecord {
 
 		$ar_obj = new static();
 		foreach ($row as $key => $value) {
-			$ar_obj ->$key = $value;
+			$ar_obj->$key = $value;
 		}
 
 		return $ar_obj;
 	}
 
-	public static function find($id) {
-		$sql = "SELECT * FROM ".static::$tablename." WHERE id=$id";
+	public static function find($id)
+	{
+		$sql = "SELECT * FROM " . static::$tablename . " WHERE id=$id";
 		$stmt = static::$pdo->query($sql);
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -81,62 +92,65 @@ class BaseActiveRecord {
 
 		$ar_obj = new static();
 		foreach ($row as $key => $value) {
-			$ar_obj ->$key = $value;
+			$ar_obj->$key = $value;
 		}
 
 		return $ar_obj;
 	}
 
-	public static function findAll() {
+	public static function findAll()
+	{
 		static::setupConnection();
 		static::getFields();
 
 		$result = [];
-		$sql = "SELECT * FROM ".static::$tablename;
+		$sql = "SELECT * FROM " . static::$tablename;
 		$stmt = static::$pdo->query($sql);
-		
-		while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 			array_push($result, $row);
 		}
 
 		return $result;
-    }
+	}
 
-	public static function findByPage($offset, $rowsPerPage) {
+	public static function findByPage($offset, $rowsPerPage)
+	{
 		static::setupConnection();
 
 		$result = [];
-        $sql = "SELECT * FROM ".static::$tablename." ORDER BY date DESC LIMIT ".$offset.", ".$rowsPerPage;
-        $stmt = static::$pdo->query($sql);
-		
-		while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+		$sql = "SELECT * FROM " .static::$tablename." ORDER BY date DESC LIMIT " . $offset . ", " . $rowsPerPage;
+		$stmt = static::$pdo->query($sql);
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 			array_push($result, $row);
 		}
 
 		return $result;
-    }
-    
-	public static function getCount() {
+	}
+
+	public static function getCount()
+	{
 		static::setupConnection();
 
-		$sql = "SELECT COUNT(*) FROM ".static::$tablename;
-        $stmt = static::$pdo->query($sql);
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+		$sql = 'SELECT COUNT(*) FROM' . static::$tablename;
+		$stmt = static::$pdo->query($sql);
+		$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		return current($result);
 	}
 
-	public function save($data) {
+	public function save($data)
+	{
 		static::setupConnection();
-		
+
 		$values = implode("', '", $data);
 		$values = '\'' . $values . '\'';
 		$fields = implode("`, `", static::$dbfields);
 		$fields = '`' . $fields . '`';
-		
+
 		$tablename1 = static::$tablename;
-        $sql = "INSERT INTO $tablename1 ($fields) VALUES ($values)";
-        $stmt = static::$pdo->query($sql);
+		$sql = "INSERT INTO $tablename1 ($fields) VALUES ($values)";
+		$stmt = static::$pdo->query($sql);
 
 		if ($stmt) {
 			return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -145,8 +159,9 @@ class BaseActiveRecord {
 		}
 	}
 
-	public function delete() {
-		$sql = "DELETE FROM ".static::$tablename." WHERE ID=".$this->id;
+	public function delete()
+	{
+		$sql = "DELETE FROM " . static::$tablename . " WHERE ID=" . $this->id;
 		$stmt = static::$pdo->query($sql);
 
 		if ($stmt) {
@@ -156,18 +171,19 @@ class BaseActiveRecord {
 		}
 	}
 
-	public function executeSQL($sql) {
-        static::setupConnection();
-        
+	public function executeSQL($sql)
+	{
+		static::setupConnection();
+
 		$stmt = static::$pdo->query($sql);
-        $result = [];
-        
+		$result = [];
+
 		if ($stmt) {
 			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 				array_push($result, $row);
 			}
-        }
-        
+		}
+
 		return $result;
 	}
 }

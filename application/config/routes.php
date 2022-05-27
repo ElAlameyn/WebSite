@@ -71,4 +71,14 @@ return [
     'action' => 'create'   
   ],
 
+  'editBlog/index' => [
+    'controller' => 'editBlog',
+    'action' => 'index'   
+  ],
+
+  'editBlog/add' => [
+    'controller' => 'editBlog',
+    'action' => 'add'   
+  ],
+
 ];
