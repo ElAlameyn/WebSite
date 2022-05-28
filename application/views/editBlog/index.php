@@ -76,7 +76,7 @@
                                         data-title='<?= $post['title'] ?>'
                                         data-message='<?= $post['text'] ?>'
                                     >
-                                        <img src="/public/img/edit.png" />
+                                        <img src=/public/images/edit.png />
                                     </button>
                                 </div>
                                 <div class="card-footer">
@@ -87,7 +87,7 @@
                         <div class="card-comment">
                             <h6 class="card-comment__title">
                                 <?= count($comments[$i]) ?> Комментариев
-                            </h6>
+                            </h6>   
                             <div class="card-comment__container">
         <?php
                             foreach ($comments[$i] as $comment) {

@@ -81,4 +81,16 @@ return [
     'action' => 'add'   
   ],
 
+  'blog/index' => [
+    'controller' => 'blog',
+    'action' => 'index'   
+  ],
+  
+  'blog/add' => [
+    'controller' => 'blog',
+    'action' => 'add'   
+  ],
+
+  
+
 ];

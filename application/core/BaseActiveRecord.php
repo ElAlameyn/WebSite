@@ -9,7 +9,7 @@ use \FFI\Exception;
 class BaseActiveRecord
 {
 	public static $pdo;
-	protected static $tablename = "web";
+	protected static $tablename = "one";
 	protected static $dbfields = array();
 
 	public function __construct()
@@ -142,10 +142,11 @@ class BaseActiveRecord
 	public function save($data)
 	{
 		static::setupConnection();
+		$dbfields = ['title', 'image', 'text', 'date'];
 
 		$values = implode("', '", $data);
 		$values = '\'' . $values . '\'';
-		$fields = implode("`, `", static::$dbfields);
+		$fields = implode("`, `", $dbfields);
 		$fields = '`' . $fields . '`';
 
 		$tablename1 = static::$tablename;

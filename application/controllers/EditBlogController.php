@@ -12,6 +12,7 @@ class EditBlogController extends Controller
         $result = $this->model->editBlockModel->getPosts($_GET);
         $vars = [
             'posts' => $result['posts'],
+            'comments' => $result['comments'],
             'current_page' => $result['current_page'],
             'total_pages' => $result['total_pages']
         ];
@@ -32,6 +33,7 @@ class EditBlogController extends Controller
             $result = $this->model->editBlockModel->getPosts($_GET);
             $vars = [
                 'posts' => $result['posts'],
+                'comments' => $result['comments'],
                 'errors' => $errors,
                 'current_page' => $result['current_page'],
                 'total_pages' => $result['total_pages']

@@ -11,6 +11,7 @@ class MainModel extends Model {
     public $resultVerification;
     public $guestBookModel;
     public $editBlockModel;
+    public $blogModel;
 
     public function __construct() {
         parent::__construct();        
@@ -19,6 +20,7 @@ class MainModel extends Model {
         $this->resultVerification = new ResultsVerification();
         $this->guestBookModel = new GuestBookModel();
         $this->editBlockModel = new EditBlogModel();
+        $this->blogModel = new BlogModel();
     }
     
 }

@@ -14,7 +14,6 @@ class ResultsVerification extends CustomFormValidation {
     }
 
     public function checkAns($post_array) {
-        //debug($this->answers);
         foreach ($this->answers as $key => $value) {
             if ($post_array[$key] == $value) {
                 $this->result++;
