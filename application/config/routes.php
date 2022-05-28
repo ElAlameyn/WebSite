@@ -91,6 +91,17 @@ return [
     'action' => 'add'   
   ],
 
+  'uploadPosts/index' => [
+    'controller' => 'uploadPosts',
+    'action' => 'index'   
+  ],
+
+  'uploadPosts/create' => [
+    'controller' => 'uploadPosts',
+    'action' => 'create'   
+  ],
+  
+
   
 
 ];

@@ -12,6 +12,7 @@ class MainModel extends Model {
     public $guestBookModel;
     public $editBlockModel;
     public $blogModel;
+    public $uploadPostsModel;
 
     public function __construct() {
         parent::__construct();        
@@ -21,6 +22,7 @@ class MainModel extends Model {
         $this->guestBookModel = new GuestBookModel();
         $this->editBlockModel = new EditBlogModel();
         $this->blogModel = new BlogModel();
+        $this->uploadPostsModel = new UploadPostsModel();
     }
     
 }
