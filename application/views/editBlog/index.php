@@ -119,7 +119,7 @@
             <li class="page-item">
                 <a 
                     class="page-link" 
-                    href="/admin/editblog/index/?page=<?= $current_page - 1 == 0 ? 1 : $current_page - 1?>"
+                    href="/editBlog/index/?page=<?= $current_page - 1 == 0 ? 1 : $current_page - 1?>"
                     style="color: limegreen; background-color: black; border-color: limegreen;"
                 >
                     Предыдущая
@@ -130,13 +130,13 @@
                     if (!($i == $current_page )) {
                         echo '
                             <li class="page-item">
-                                <a style="color: limegreen; background-color: black; border-color: limegreen;" class="page-link" href="/editblog/index/?page='.$i.'">'.$i.'</a>
+                                <a style="color: limegreen; background-color: black; border-color: limegreen;" class="page-link" href="/editBlog/index/?page='.$i.'">'.$i.'</a>
                             </li>
                         ';
                     } else {
                         echo '
                             <li class="page-item active">
-                                <a style="color: white; background-color: limegreen; border-color: limegreen;" class="page-link" href="/editblog/index/?page='.$i.'">'.$i.'</a>
+                                <a style="color: white; background-color: limegreen; border-color: limegreen;" class="page-link" href="/editBlog/index/?page='.$i.'">'.$i.'</a>
                             </li>
                         ';
                     }
@@ -145,7 +145,7 @@
             <li class="page-item">
                 <a 
                     class="page-link" 
-                    href="/editblog/index/?page=<?= $current_page + 1 > $total_pages ? $total_pages : $current_page + 1 ?>"
+                    href="/editBlog/index/?page=<?= $current_page + 1 > $total_pages ? $total_pages : $current_page + 1 ?>"
                     style="color: limegreen; background-color: black; border-color: limegreen;"
                 >
                     Следующая

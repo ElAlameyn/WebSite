@@ -132,9 +132,12 @@ class BaseActiveRecord
 	{
 		static::setupConnection();
 
-		$sql = 'SELECT COUNT(*) FROM' . static::$tablename;
+
+		$sql = 'SELECT COUNT(*) FROM ' . static::$tablename;
 		$stmt = static::$pdo->query($sql);
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	//	debug($result);
 
 		return current($result);
 	}
