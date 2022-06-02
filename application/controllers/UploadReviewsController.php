@@ -2,24 +2,33 @@
 
 
 namespace application\controllers;
-use application\core\Controller;
 
-class UploadReviewsController extends Controller {
-	function indexAction() {	
-		$this->view->render('UploadReviewsView.php');
+use application\core\Controller;
+use application\models\GuestBookModel;
+
+class UploadReviewsController extends Controller
+{
+    function indexAction()
+    {
+        $this->view->render('UploadReviewsView.php');
     }
-    
-    function createAction() {
+
+    function createAction()
+    {
+        $model = new GuestBookModel();
+
+        
         if ($_FILES['file']['name'] != "") {
-            if (copy ($_FILES['file']['tmp_name'], 'reviews.inc')) {
-                $vars = [ 'result' => true ];
-            } else {
-                $vars = [ 'error' => true ];
+            //debug(file($_FILES['file']['tmp_name']));
+            foreach(file($_FILES['file']['tmp_name']) as $file) {
+            //    debug($file);
+                $model->addReview($file);
             }
+             $vars = ['result' => true];
             $this->view->render('UploadReviewsView.php', $vars);
         } else {
-            $vars = [ 'empty' => true ];
+            $vars = ['empty' => true];
             $this->view->render('UploadReviewsView.php', $vars);
         }
-	}
+    }
 }

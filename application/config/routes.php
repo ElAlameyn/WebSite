@@ -101,7 +101,10 @@ return [
     'action' => 'create'   
   ],
   
-
+  'login' => [
+    'controller' => 'login',
+    'action' => 'index'   
+  ]
   
 
 ];

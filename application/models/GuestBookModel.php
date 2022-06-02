@@ -18,7 +18,7 @@ class GuestBookModel extends Model {
 
     public function addReview($data) {
         $str = '';
-        $file = fopen('reviews.inc', 'a+');
+        $file = fopen('reviews.inc', 'a');
 
         foreach($data as $item) {
             $str .= $item . ';';

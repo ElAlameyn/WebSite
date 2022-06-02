@@ -53,7 +53,6 @@
         <h5 class='mb-3'>Отзывы:</h5>
         <?php 
             if (isset($reviews) && count($reviews) > 0) {
-                
                 function cmp($a, $b) 
                 {
                     if ($a[2] == $b[2]) {
@@ -62,7 +61,7 @@
                     return (strtotime($a[2]) > strtotime($b[2])) ? -1 : 1;
                 }
 
-                usort($reviews, "cmp");
+                 usort($reviews, "cmp");
                 foreach ($reviews as $review) {
                     echo "
                         <div class='reviews-block__item'>
