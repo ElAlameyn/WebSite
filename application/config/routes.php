@@ -101,10 +101,31 @@ return [
     'action' => 'create'   
   ],
   
-  'login' => [
-    'controller' => 'login',
+  'admin' => [
+    'controller' => 'adminLogin',
     'action' => 'index'   
-  ]
+  ],
+
+  'admin/login' => [
+    'controller' => 'adminLogin',
+    'action' => 'login'   
+  ],
+
+  'login/signin' => [
+    'controller' => 'login',
+    'action' => 'signin'   
+  ],
+
+  'login/signup' => [
+    'controller' => 'login',
+    'action' => 'signup'   
+  ],
+
+  'login/create' => [
+    'controller' => 'login',
+    'action' => 'create'   
+  ],
+
   
 
 ];

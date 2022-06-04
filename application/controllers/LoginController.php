@@ -1,22 +1,34 @@
 <?php
 
 namespace application\controllers;
+
 use application\core\Controller;
 
-class LoginController extends Controller {
+class LoginController extends Controller
+{
 
-    function indexAction() {
-		$this->view->render('AdminAuthView.php');
+    function signinAction()
+    {
+        $this->view->render('SignInView.php');
     }
-    
-    function loginAction() {
-		if (!empty($_POST)) {
-			$this->model->validator->validate($_POST);
+
+    function signupAction()
+    {
+        $this->view->render('SignUpView.php');
+    }
+
+    function loginAction()
+    {
+        if (!empty($_POST)) {
+            $this->model->validator->validate($_POST);
             $errors = $this->model->validator->getErrors();
 
             if (empty($errors)) {
-                if ($this->compareLoginData($_POST)) {
-                    header('Location:/admin/editblog');
+                $findUser = $this->model->findUser($_POST);
+                if ($findUser) {
+                    $_SESSION['isUser'] = 1;
+                    $_SESSION['userFullname'] = $findUser->fullname;
+                    header('Location:/');
                     exit;
                 } else {
                     $login = false;
@@ -24,25 +36,59 @@ class LoginController extends Controller {
                 }
             }
 
-            $vars = [ 'errors' => $errors, 'login' => $login ];
+            $vars = ['errors' => $errors, 'login' => $login];
 
-			$this->view->render('AdminAuthView.php', $vars);
-		} else {
-            $this->view->render('AdminAuthView.php');
+            $this->view->render('SignInView.php', $vars);
+        } else {
+            $this->view->render('SignInView.php');
         }
     }
 
-    function logoutAction() {
-        unset($_SESSION['isAdmin']);
-        header('Location:/admin/auth');
+    function createAction()
+    {
+        if (!empty($_POST)) {
+            $this->model->validator->validate($_POST);
+            $errors = $this->model->validator->getErrors();
+
+            if (empty($errors)) {
+                $errors = $this->model->createUser($_POST);
+                if (count($errors) == 0) {
+                    $_POST = array();
+                    header('Location:/auth/signin');
+                    exit;
+                }
+            }
+
+            $vars = ['errors' => $errors];
+
+            $this->view->render('SignUpView.php', $vars);
+        } else {
+            $this->view->render('SignUpView.php');
+        }
+    }
+
+    function logoutAction()
+    {
+        unset($_SESSION['isUser']);
+        header('Location:/auth/signin');
         exit;
     }
-    
-    function compareLoginData($post_array) {
-        if (($post_array['login'] === 'admin') && (($post_array['password']) === 'admin')) {
-            $_SESSION['isAdmin'] = 1;
-            return true; 
-        } 
-        return false;
+
+    function checkLoginAction()
+    {
+        $findUserByLogin = $this->model->findByField($_POST['login'], 'login');
+        $findUserByEmail = $this->model->findByField($_POST['email'], 'email');
+
+        $result = [];
+
+        if ($findUserByEmail != null) {
+            array_push($result, "Данный email уже существует");
+        }
+
+        if ($findUserByLogin != null) {
+            array_push($result, "Данный логин уже существует");
+        }
+
+        echo json_encode($result);
     }
 }

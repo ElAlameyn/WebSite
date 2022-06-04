@@ -34,6 +34,9 @@ class FormValidation {
         'message' => [
             'isNotEmpty'
         ],
+        'login' => [
+            'isNotEmpty'
+        ],
     ];
 
     public function setRule($field_name, $validator_name) {

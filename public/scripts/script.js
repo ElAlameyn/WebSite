@@ -49,7 +49,9 @@ const imgBody = $(".content.img"),
     "file.png",
     "file.png",
     "file.png",
-    "file.png"
+    "file.png",
+    "like.png",
+    "like.png"
   ],
   title_check = ["success.png"],
   data_title = [
@@ -63,7 +65,9 @@ const imgBody = $(".content.img"),
     "Upload Reviews", 
     "Edit Blog",
     "Blog",
-    "Upload Posts"
+    "Upload Posts",
+    "Admin",
+    "Login"
   ];
 
 let numTitles,
@@ -410,6 +414,8 @@ function outputNavbar(indexCheck) {
       case 8: link = "/editBlog/index"; break;
       case 9: link = "/blog/index"; break;
       case 10: link = "/uploadPosts/index"; break;
+      case 11: link = "/admin"; break;
+      case 12: link = "/login/signin"; break;
     }
 
     let context = `<li ><a class="link " href="${link}">${data_title[i]
