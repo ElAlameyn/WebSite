@@ -6,7 +6,7 @@ use application\core\Controller;
 class GuestBookController extends Controller {
 
 	function indexAction() {	
-    $reviews = $this->model->guestBookModel->parseReviews();	
+    $reviews = $this->model->parseReviews();	
     $vars = [ 'reviews' => $reviews ];	
 		$this->view->render('GuestBookView.php', $vars);
   }
@@ -19,11 +19,11 @@ class GuestBookController extends Controller {
             if (empty($errors)) {
                 $newReview = [];
                 array_push($newReview, $_POST['fullName'], $_POST['Email'], date('Y-m-d H:i:s'), $_POST['review']);
-                $this->model->guestBookModel->addReview($newReview);
+                $this->model->addReview($newReview);
                 $_POST = array();
             }
 
-            $reviews = $this->model->guestBookModel->parseReviews();
+            $reviews = $this->model->parseReviews();
             $vars = [ 'errors' => $errors, 'reviews' => $reviews ];
 
 			$this->view->render('GuestBookView.php', $vars);

@@ -111,6 +111,11 @@ return [
     'action' => 'login'   
   ],
 
+  'admin/logout' => [
+    'controller' => 'adminLogin',
+    'action' => 'logout'   
+  ],
+
   'login/signin' => [
     'controller' => 'login',
     'action' => 'signin'   
@@ -125,6 +130,17 @@ return [
     'controller' => 'login',
     'action' => 'create'   
   ],
+
+
+  'login/login' => [
+    'controller' => 'login',
+    'action' => 'login'   
+  ],
+
+  'login/logout' => [
+    'controller' => 'login',
+    'action' => 'logout'   
+  ]
 
   
 

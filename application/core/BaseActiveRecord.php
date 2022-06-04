@@ -9,8 +9,8 @@ use \FFI\Exception;
 class BaseActiveRecord
 {
 	public static $pdo;
-	protected static $tablename = "one";
-	protected static $dbfields = array();
+	public static $tablename = "one";
+	protected static $dbfields = array('title', 'image', 'text', 'date');
 
 	public function __construct()
 	{
@@ -120,6 +120,7 @@ class BaseActiveRecord
 
 		$result = [];
 		$sql = "SELECT * FROM " .static::$tablename." ORDER BY date DESC LIMIT " . $offset . ", " . $rowsPerPage;
+	//	debug(static::$tablename);
 		$stmt = static::$pdo->query($sql);
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 			array_push($result, $row);
@@ -137,19 +138,16 @@ class BaseActiveRecord
 		$stmt = static::$pdo->query($sql);
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-	//	debug($result);
-
 		return current($result);
 	}
 
 	public function save($data)
 	{
 		static::setupConnection();
-		$dbfields = ['title', 'image', 'text', 'date'];
 
 		$values = implode("', '", $data);
 		$values = '\'' . $values . '\'';
-		$fields = implode("`, `", $dbfields);
+		$fields = implode("`, `", static::$dbfields);
 		$fields = '`' . $fields . '`';
 
 		$tablename1 = static::$tablename;

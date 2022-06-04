@@ -38,7 +38,7 @@ const imgBody = $(".content.img"),
   interests = $(".ul_anchor"),
   sendButton = $("#send"),
   content_ul = $(".content__links"),
-  title_menu = [
+  user_menu = [
     "file.png",
     "like.png",
     "photo-camera.png",
@@ -48,13 +48,20 @@ const imgBody = $(".content.img"),
     "file.png",
     "file.png",
     "file.png",
-    "file.png",
-    "file.png",
     "like.png",
-    "like.png"
+    "like.png",
+    "file.png"
   ],
+
+  admin_menu = [
+    "file.png",
+    "file.png",
+    "file.png"
+  ],
+
+
   title_check = ["success.png"],
-  data_title = [
+  user_title = [
     "My interests",
     "Education",
     "Photo",
@@ -62,12 +69,17 @@ const imgBody = $(".content.img"),
     "Test",
     "Story",
     "Guest Book",
-    "Upload Reviews", 
-    "Edit Blog",
     "Blog",
     "Upload Posts",
     "Admin",
-    "Login"
+    "Login",
+    "Exit"
+  ];
+
+  admin_title = [
+    "Edit Blog",
+    "Upload Reviews", 
+    "Exit"
   ];
 
 let numTitles,
@@ -396,35 +408,50 @@ function findNumTitle() {
   }
 
   setCookie(numStory);
-  outputNavbar(numTitles);
 }
 
-function outputNavbar(indexCheck) {
+function outputNavbar(isAdmin, isAuthorized) {
   let link = ""
-  title_menu.forEach((element, i) => {
-    switch (i) {
-      case 0: link = "/hobbies"; break;
-      case 1: link = "/studies"; break;
-      case 2: link = "/photoAlbum"; break;
-      case 3: link = "/contacts/index"; break;
-      case 4: link = "/test/index"; break;
-      case 5: link = "/story"; break;
-      case 6: link = "/guestBook/index"; break;
-      case 7: link = "/uploadReviews/index"; break;
-      case 8: link = "/editBlog/index"; break;
-      case 9: link = "/blog/index"; break;
-      case 10: link = "/uploadPosts/index"; break;
-      case 11: link = "/admin"; break;
-      case 12: link = "/login/signin"; break;
-    }
+  if (!isAdmin) {
+    if (!isAuthorized) { user_menu.pop(); }
+    user_menu.forEach((element, i) => {
+      switch (i) {
+        case 0: link = "/hobbies"; break;
+        case 1: link = "/studies"; break;
+        case 2: link = "/photoAlbum"; break;
+        case 3: link = "/contacts/index"; break;
+        case 4: link = "/test/index"; break;
+        case 5: link = "/story"; break;
+        case 6: link = "/guestBook/index"; break; 
+        case 7: link = "/blog/index"; break;
+        case 8: link = "/uploadPosts/index"; break;
+        case 9: link = "/admin"; break;
+        case 10: link = "/login/signin"; break;
+        case 11: link = "/login/logout"; break;
+      };
 
-    let context = `<li ><a class="link " href="${link}">${data_title[i]
-      }</a> <img src="/public/ico/${indexCheck == i ? title_check : element
-      }" alt=""></li>`;
+      let context = `<li ><a class="link " href="${link}">${user_title[i]
+      }</a></li>`;
 
-    content_ul.append(context);
-  });
+      content_ul.append(context);
+
+    })
+  } else {
+    admin_menu.forEach((element, i ) => {
+      switch(i) {
+        case 0: link = "/editBlog/index"; break;
+        case 1: link = "/uploadReviews/index"; break;
+        case 2: link = "/admin/logout"; break;
+      }
+      let context = `<li ><a class="link " href="${link}">${admin_title[i]
+      }</a></li>`;
+  
+      content_ul.append(context);
+    })
+
+  };
 }
+
 
 function setDate() {
   const date = new Date(),

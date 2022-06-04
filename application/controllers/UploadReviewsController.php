@@ -19,9 +19,7 @@ class UploadReviewsController extends Controller
 
         
         if ($_FILES['file']['name'] != "") {
-            //debug(file($_FILES['file']['tmp_name']));
             foreach(file($_FILES['file']['tmp_name']) as $file) {
-            //    debug($file);
                 $model->addReview($file);
             }
              $vars = ['result' => true];

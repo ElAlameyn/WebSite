@@ -6,7 +6,6 @@ use application\core\Controller;
 
 class LoginController extends Controller
 {
-
     function signinAction()
     {
         $this->view->render('SignInView.php');
@@ -54,7 +53,7 @@ class LoginController extends Controller
                 $errors = $this->model->createUser($_POST);
                 if (count($errors) == 0) {
                     $_POST = array();
-                    header('Location:/auth/signin');
+                    header('Location:/login/signin');
                     exit;
                 }
             }
@@ -70,7 +69,7 @@ class LoginController extends Controller
     function logoutAction()
     {
         unset($_SESSION['isUser']);
-        header('Location:/auth/signin');
+        header('Location:/login/signin');
         exit;
     }
 

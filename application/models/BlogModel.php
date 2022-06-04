@@ -4,8 +4,9 @@ namespace application\models;
 use application\core\Model;
 
 class BlogModel extends Model {
-    public function BlogModel() {
-        static::$tablename = 'blog';
+    public function __construct() {
+        parent::__construct();
+        static::$tablename = 'one';
         static::$dbfields = array('title', 'image', 'text', 'date');
         $this->saveUserInfo("Блох");
     }

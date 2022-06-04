@@ -1,11 +1,13 @@
 <?php
 
 namespace application\models;
+
+use application\core\BaseActiveRecord;
 use application\core\Model;
 
 class LoginModel extends Model {
-    public function AuthModel() {
-       // parent::Model();
+    public function __construct() {
+       parent::__construct();
         static::$tablename = 'users';
         static::$dbfields = array('fullname', 'email', 'login', 'password');
     }
@@ -40,13 +42,14 @@ class LoginModel extends Model {
     }
 
     public function findUser($post_array) {
+        //debug('ok');
         try {
             $user = $this->findByQuery("`login`='".$post_array['login']."' AND `password`='".$post_array['password']."'");
             
             if ($user == null) {
                 return false;
             }
-    
+         
             return $user;
         } catch (\Throwable $th) {
             return false;

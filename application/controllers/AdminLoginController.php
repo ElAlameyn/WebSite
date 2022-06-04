@@ -6,6 +6,8 @@ use application\core\Controller;
 
 class AdminLoginController extends Controller
 {
+    
+
     function indexAction()
     {
         $this->view->render('AdminAuthView.php');
@@ -38,7 +40,7 @@ class AdminLoginController extends Controller
     function logoutAction()
     {
         unset($_SESSION['isAdmin']);
-        header('Location:/admin/login');
+        header('Location:/admin');
         exit;
     }
 

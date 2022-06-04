@@ -11,10 +11,10 @@
 </head>
 
 <body>
-  <header>
-    <div class="title-block">
-      <h1 class="title">Majesty Developer</h1>
-    </div>
+<header>
+    <?php 
+     echo require 'application/lib/header.php';
+    ?>
     <div class="time"></div>
   </header>
 
@@ -55,14 +55,17 @@
             if (isset($reviews) && count($reviews) > 0) {
                 function cmp($a, $b) 
                 {
-                    if ($a[2] == $b[2]) {
-                        return 0;
+                    if (isset($a[2]) && isset($b[2])) {
+                        if ($a[2] == $b[2]) {
+                            return 0;
+                        }
+                        return (strtotime($a[2]) > strtotime($b[2])) ? -1 : 1;
                     }
-                    return (strtotime($a[2]) > strtotime($b[2])) ? -1 : 1;
                 }
 
                  usort($reviews, "cmp");
                 foreach ($reviews as $review) {
+                    if (isset($review[0]) && isset($review[2]) && isset($review[3]))
                     echo "
                         <div class='reviews-block__item'>
                             <div class='reviews__header'>

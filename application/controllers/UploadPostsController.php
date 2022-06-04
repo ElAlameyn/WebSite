@@ -11,7 +11,7 @@ class UploadPostsController extends Controller {
     function createAction() {
         if ($_FILES['file']['name'] != "") {
             var_dump($_FILES['file']['name']);
-            if ($this->model->uploadPostsModel->savePosts($_FILES)) {
+            if ($this->mode->savePosts($_FILES)) {
                 $vars = [ 'result' => true ];
             } else {
                 $vars = [ 'error' => true ];

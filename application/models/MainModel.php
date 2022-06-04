@@ -9,22 +9,12 @@ class MainModel extends Model {
     public $photoModel;
     public $interests;
     public $resultVerification;
-    public $guestBookModel;
-    public $editBlockModel;
-    public $blogModel;
-    public $uploadPostsModel;
-    public $loginModel;
 
     public function __construct() {
         parent::__construct();        
         $this->photoModel = new PhotoModel();
         $this->interests = new InterestsModel();
         $this->resultVerification = new ResultsVerification();
-        $this->guestBookModel = new GuestBookModel();
-        $this->editBlockModel = new EditBlogModel();
-        $this->blogModel = new BlogModel();
-        $this->uploadPostsModel = new UploadPostsModel();
-        $this-> loginModel = new LoginModel();
     }
     
 }

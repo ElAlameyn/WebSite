@@ -11,10 +11,10 @@
 </head>
 
 <body>
-  <header>
-    <div class="title-block">
-      <h1 class="title">Majesty Developer</h1>
-    </div>
+<header>
+    <?php 
+     echo require 'application/lib/header.php';
+    ?>
     <div class="time"></div>
   </header>
 
@@ -28,7 +28,7 @@
 <div class="row justify-content-center">
         <div class="col-lg-4 text-center">
             <h3 class="mb-4">Вход</h3>
-            <form action="/login/signin" method="POST" class="mb-4">
+            <form action="/login/login  " method="POST" class="mb-4">
                 <div class="form-group">
                     <input type="text" class="form-control tooltip-input" name="login" placeholder="Введите логин" autocomplete="off">
                 </div>

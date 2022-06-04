@@ -37,6 +37,12 @@ class FormValidation {
         'login' => [
             'isNotEmpty'
         ],
+        'fullname' => [
+            'isNotEmpty'
+        ],
+        'password' => [
+            'isNotEmpty'
+        ]
     ];
 
     public function setRule($field_name, $validator_name) {
