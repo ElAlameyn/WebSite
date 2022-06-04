@@ -4,6 +4,12 @@ use application\core\Model;
 
 class GuestBookModel extends Model {
 
+    function __construct()
+    {
+        $this->saveUserInfo("GuestBook");
+    }
+    
+
     public function parseReviews() {
         $filename = "reviews.inc";
         $reviews = [];

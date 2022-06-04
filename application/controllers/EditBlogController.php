@@ -4,12 +4,13 @@ namespace application\controllers;
 
 use application\core\Controller;
 
-class EditBlogController extends Controller
+class EditBlogController extends AdminController
 {
 
     function indexAction()
     {
-        $result = $this->model->editBlockModel->getPosts($_GET);
+        $this->checkIsAuth();
+        $result = $this->model->getPosts($_GET);
         $vars = [
             'posts' => $result['posts'],
             'comments' => $result['comments'],
@@ -21,16 +22,17 @@ class EditBlogController extends Controller
 
     function addAction()
     {
+        $this->checkIsAuth();
         if (!empty($_POST)) {
             $this->model->validator->validate($_POST);
             $errors = $this->model->validator->getErrors();
 
             if (empty($errors)) {
-                $this->model->editBlockModel->addPost($_POST, $_FILES);
+                $this->model->addPost($_POST, $_FILES);
                 $_POST = array();
             }
 
-            $result = $this->model->editBlockModel->getPosts($_GET);
+            $result = $this->model->getPosts($_GET);
             $vars = [
                 'posts' => $result['posts'],
                 'comments' => $result['comments'],

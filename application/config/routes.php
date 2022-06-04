@@ -140,8 +140,12 @@ return [
   'login/logout' => [
     'controller' => 'login',
     'action' => 'logout'   
-  ]
+  ],
 
-  
+  'adminStatistics/index' => [
+    'controller' => 'adminStatistics',
+    'action' => 'index'   
+  ]
+ 
 
 ];

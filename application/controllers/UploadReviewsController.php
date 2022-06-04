@@ -6,15 +6,17 @@ namespace application\controllers;
 use application\core\Controller;
 use application\models\GuestBookModel;
 
-class UploadReviewsController extends Controller
+class UploadReviewsController extends AdminController
 {
     function indexAction()
     {
+        $this->checkIsAuth();
         $this->view->render('UploadReviewsView.php');
     }
 
     function createAction()
     {
+        $this->checkIsAuth();
         $model = new GuestBookModel();
 
         

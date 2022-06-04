@@ -56,6 +56,7 @@ const imgBody = $(".content.img"),
   admin_menu = [
     "file.png",
     "file.png",
+    "file.png",
     "file.png"
   ],
 
@@ -79,6 +80,7 @@ const imgBody = $(".content.img"),
   admin_title = [
     "Edit Blog",
     "Upload Reviews", 
+    "Statistics",
     "Exit"
   ];
 
@@ -441,8 +443,9 @@ function outputNavbar(isAdmin, isAuthorized) {
       switch(i) {
         case 0: link = "/editBlog/index"; break;
         case 1: link = "/uploadReviews/index"; break;
-        case 2: link = "/admin/logout"; break;
-      }
+        case 2: link = "/adminStatistics/index"; break;
+        case 3: link = "/admin/logout"; break;
+d      }
       let context = `<li ><a class="link " href="${link}">${admin_title[i]
       }</a></li>`;
   

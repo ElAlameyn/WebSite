@@ -5,6 +5,7 @@ use application\core\Model;
 
 class UploadPostsModel extends Model {
     public function AdminUploadPostsModel() {
+        $this->saveUserInfo("Upload");
         static::$tablename = 'blog';
         static::$dbfields = array('title', 'text', 'date');
     }

@@ -8,7 +8,7 @@ class BlogModel extends Model {
         parent::__construct();
         static::$tablename = 'one';
         static::$dbfields = array('title', 'image', 'text', 'date');
-        $this->saveUserInfo("Блох");
+        $this->saveUserInfo("Blog");
     }
 
     public function getPosts($get_array) {

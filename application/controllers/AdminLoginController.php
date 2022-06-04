@@ -1,7 +1,6 @@
 <?php
 
 namespace application\controllers;
-
 use application\core\Controller;
 
 class AdminLoginController extends Controller

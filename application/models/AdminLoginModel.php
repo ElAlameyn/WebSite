@@ -1,11 +1,9 @@
 <?php
 
 namespace application\models;
-
-use application\core\BaseActiveRecord;
 use application\core\Model;
 
-class LoginModel extends Model {
+class AdminLoginModel extends Model {
     public function __construct() {
        parent::__construct();
        
