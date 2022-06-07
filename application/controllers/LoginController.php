@@ -50,6 +50,7 @@ class LoginController extends Controller
             $errors = $this->model->validator->getErrors();
 
             if (empty($errors)) {
+
                 $errors = $this->model->createUser($_POST);
                 if (count($errors) == 0) {
                     $_POST = array();

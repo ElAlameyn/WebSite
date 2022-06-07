@@ -8,6 +8,7 @@
     <title>Majesty Developer</title>
     <link rel="stylesheet" href="/public/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/style.css">
+    
 </head>
 
 <body>
@@ -23,8 +24,7 @@
 
         </ul>
     </nav>
-    <script src="/public/js/date.js"></script>
-    <script src="/public/js/sendMessage.js"></script>
+
 
     <section class="content container">
     <div class="row justify-content-center">
@@ -43,7 +43,12 @@
                 <div class="form-group">
                     <input type="password" class="form-control tooltip-input" name="password" placeholder="Введите пароль">
                 </div>
-                <button class="btn btn-primary btn-block" type="submit" style="color: limegreen; background-color: black; border-color: limegreen;">Зарегистрироваться</button>
+                <button 
+                class="btn btn-primary btn-block" 
+                type="submit"
+                style="color: limegreen; background-color: black; border-color: limegreen;"
+                onclick="checkLogin"
+                >Зарегистрироваться</button>
             </form>
             <a href="/login/signin" style="color: limegreen;">Уже зарегистрированы?</a>
             <div class='result-block'>
@@ -61,6 +66,7 @@
     </div>
     </section>
 
+    <script src="/public/scripts/checkLogin.js"></script>
 
 </body>
 <script src="/public/scripts/jquery-3.6.0.min.js"></script>

@@ -121,6 +121,17 @@ return [
     'action' => 'signin'   
   ],
 
+  'login/checkLogin' => [
+    'controller' => 'login',
+    'action' => 'checkLogin'   
+  ],
+
+  'login/index' => [
+    'controller' => 'login',
+    'action' => 'signup'   
+  ],
+
+
   'login/signup' => [
     'controller' => 'login',
     'action' => 'signup'   

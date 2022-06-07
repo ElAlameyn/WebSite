@@ -53,7 +53,7 @@ class BlogModel extends Model {
     public function addComment($request_array) {
         $sql = "
             INSERT INTO `comments` (`id_post`, `fullname`, `comment`, `date`) 
-            VALUES ('".$request_array["is_post"]."', '".$request_array["fullname"]."', '".$request_array["comment"]."', '".$request_array["date"]."')
+            VALUES ('".$request_array["id_post"]."', '".$request_array["fullname"]."', '".$request_array["comment"]."', '".$request_array["date"]."')
         ";
         $this->executeSQL($sql);
     }

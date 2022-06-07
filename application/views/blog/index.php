@@ -23,8 +23,6 @@
 
         </ul>
     </nav>
-    <script src="/public/js/date.js"></script>
-    <script src="/public/js/sendMessage.js"></script>
 
     <section class="content container">
         <h2 class="mb-4">Блог</h2>
@@ -70,6 +68,8 @@
                                 ?>
                             </div>
 
+                            <?php if (isset($_SESSION['isUser'])) { ?>
+
                             <div class="card-comment__add">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="comment" data-id=<?= $post['id'] ?> placeholder="Введите ваш комментарий" aria-describedby="send-btn" autocomplete="off">
@@ -80,6 +80,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
             <?php
@@ -126,6 +127,7 @@
 
 
 </body>
+<script src="/public/scripts/sendMessage.js"></script>
 <script src="/public/scripts/jquery-3.6.0.min.js"></script>
 <script src="/public/scripts/script.js"></script>
 

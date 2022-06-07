@@ -11,17 +11,20 @@ class View
     public function __construct($route)
     {
         $this->route = $route;
-        $formActions = ['check', 'create', 'add'];
+        $formActions = ['check', 'create', 'add', 'login'];
         if (in_array($route['action'], $formActions)) {
             $this->path = $route['controller'] . '/index';
         } else {
             $this->path = $route['controller'] . '/' . $route['action'];
         }
+        if ($this->path  == 'login/index') { $this->path = 'login/signup'; }
     }
 
     public function render($title, $vars = [])
     {
         extract($vars);
+        //debug($this->route);
+        //debug('application/views/' . $this->path . '.php');
         if (file_exists('application/views/' . $this->path . '.php')) {
             ob_start();
 

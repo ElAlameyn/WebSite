@@ -18,16 +18,16 @@ class AdminLoginModel extends Model {
         $result = [];
 
         if ($findUserByEmail != null) {
-			array_push($result, "Данный E-mail уже существует");
-        }
+		 	array_push($result, "Данный E-mail уже существует");
+         }
 
-        if ($findUserByLogin != null) {
-			array_push($result, "Данный логин уже существует");
-        }
+         if ($findUserByLogin != null) {
+		 	array_push($result, "Данный логин уже существует");
+         }
 
-		if ($findUserByEmail != null || $findUserByLogin != null) {
-			return $result;
-        }
+		 if ($findUserByEmail != null || $findUserByLogin != null) {
+		 	return $result;
+         } 
         
         $data = [
 			"fullname" => $post_array["fullname"],

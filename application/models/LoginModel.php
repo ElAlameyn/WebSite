@@ -43,7 +43,6 @@ class LoginModel extends Model {
     }
 
     public function findUser($post_array) {
-        //debug('ok');
         try {
             $user = $this->findByQuery("`login`='".$post_array['login']."' AND `password`='".$post_array['password']."'");
             

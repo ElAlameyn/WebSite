@@ -23,6 +23,9 @@
 
     </ul>
   </nav>
+
+  <script src="/public/scripts/editBlog.js"></script>
+
   <section class="content container">
     <h2 class="mb-4">Редактор блога</h2>
     <form action="/editBlog/add" method="POST" enctype="multipart/form-data">
