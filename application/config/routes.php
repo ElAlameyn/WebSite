@@ -81,6 +81,11 @@ return [
     'action' => 'add'   
   ],
 
+  'editBlog/edit' => [
+    'controller' => 'editBlog',
+    'action' => 'edit'   
+  ],
+
   'blog/index' => [
     'controller' => 'blog',
     'action' => 'index'   

@@ -8,6 +8,8 @@
   <title>Majesty Developer</title>
   <link rel="stylesheet" href="/public/css/bootstrap.min.css">
   <link rel="stylesheet" href="/public/css/style.css">
+  <link rel="stylesheet" href="/public/css/style.scss">
+
 </head>
 
 <body>
@@ -182,9 +184,9 @@
             inputLabel.innerHTML = e.target.files[0].name;
         });
     </script>
-     <script src="/public/js/editBlog.js"></script>
+
 </section>
-  
+    <script src="/public/scripts/editBlog.js"></script>
 </body>
 <script src="/public/scripts/jquery-3.6.0.min.js"></script>
 <script src="/public/scripts/script.js"></script>

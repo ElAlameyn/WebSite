@@ -46,4 +46,22 @@ class EditBlogController extends AdminController
             $this->view->render('AdminEditBlogView.php');
         }
     }
+    
+    function editAction()
+    {
+        $this->checkIsAuth();
+
+        $xml = simplexml_load_string(file_get_contents('php://input'));
+        $json = json_encode($xml);
+        $array = json_decode($json, TRUE);
+
+        $this->model->validator->validate($array);
+        $errors = $this->model->validator->getErrors();
+
+        if (empty($errors)) {
+            $this->model->editPost($array);
+        }
+
+        echo json_encode($errors);
+    }
 }

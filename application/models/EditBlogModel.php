@@ -77,7 +77,7 @@ class EditBlogModel extends Model
     public function editPost($post_array)
     {
         $sql = "
-            UPDATE `blog` 
+            UPDATE `one` 
             SET 
                 `title` = '" . $post_array["title"] . "', 
                 `text` = '" . $post_array["message"] . "'

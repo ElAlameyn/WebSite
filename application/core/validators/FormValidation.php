@@ -42,6 +42,9 @@ class FormValidation {
         ],
         'password' => [
             'isNotEmpty'
+        ],
+        'id' => [
+            'isNotEmpty'
         ]
     ];
 
